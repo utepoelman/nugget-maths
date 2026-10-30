@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nugget Maths Lab</title>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; line-height: 1.5; }
+        header { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
+        h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+        p.subtitle { font-size: 1.2rem; color: #475569; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+        .card { background: var(--card); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; }
+        .tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
+        .card p { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; }
+        .btn { display: block; text-align: center; background: var(--primary); color: white; text-decoration: none; padding: 0.75rem; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+        .btn:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🐹 The Nugget Maths Lab</h1>
+        <p class="subtitle">Interactive, AI-crafted maths resources celebrating curiosity, creativity, and connection.</p>
+    </header>
+
+    <main class="grid">
+        <!-- Activity Card 1 -->
+        <div class="card">
+            <div>
+                <span class="tag">Year 7-9 • Number</span>
+                <h3>Nugget Integer Jumper</h3>
+                <p>Help Nugget the hamster hop along the integer line to visualize addition and subtraction of negative numbers.</p>
+            </div>
+            <a href="integer-hop.html" class="btn">Launch Activity 🚀</a>
+        </div>
+    </main>
+
+</body>
+</html>
