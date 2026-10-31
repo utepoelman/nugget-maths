@@ -1,42 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NZ">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Nugget Maths Lab</title>
-    <style>
-        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; line-height: 1.5; }
-        header { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
-        h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
-        p.subtitle { font-size: 1.2rem; color: #475569; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
-        .card { background: var(--card); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; }
-        .tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
-        .card p { font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; }
-        .btn { display: block; text-align: center; background: var(--primary); color: white; text-decoration: none; padding: 0.75rem; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
-        .btn:hover { background: #1d4ed8; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nugget Maths – free maths activities and teacher tools for NZ</title>
+<meta name="description" content="Free interactive maths games, practice activities and teacher tools for Years 5–13, organised by NZ Curriculum strand and year level.">
+<link rel="icon" href="nugget.png">
+<style>
+:root{--bg:#fff8ec;--card:#fff;--ink:#3b2a1a;--mut:#6f5b48;--btn:#b25a18;--onbtn:#fff;--acc:#b25a18;--soft:#fbe6cf;--line:#ecdcc4}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1812;--card:#2a2118;--ink:#f4e8d6;--mut:#c9b8a3;--btn:#f0a05a;--onbtn:#2a1a0c;--acc:#f0a05a;--soft:#3a2b1d;--line:#43352a}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar{max-width:1100px;margin:auto;padding:.5rem 1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.brand img{height:44px}
+nav{display:flex;gap:.25rem;flex-wrap:wrap;margin-left:auto}
+nav a{padding:.4rem .75rem;border-radius:99px;text-decoration:none;color:var(--ink);font-weight:600}
+nav a:hover,nav a[aria-current]{background:var(--soft)}
+main{max-width:1100px;margin:auto;padding:1.5rem 1rem 3rem}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin:.2rem 0 .6rem}
+h2{margin:2rem 0 .6rem}
+.hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;background:var(--soft);border-radius:20px;padding:1.5rem 2rem}
+.hero img{height:200px}.hero>div{flex:1;min-width:260px}
+.search{display:flex;gap:.5rem;margin-top:1rem}
+input[type=search],select{font:inherit;padding:.6rem .8rem;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input[type=search]{flex:1;min-width:0}
+.btn{font:inherit;font-weight:700;background:var(--btn);color:var(--onbtn);border:0;border-radius:10px;padding:.6rem 1.1rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--acc);border:2px solid var(--acc)}
+.doors,.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.door{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:1.2rem;text-decoration:none;color:var(--ink)}
+.door:hover{border-color:var(--acc)}.door b{font-size:1.2rem;display:block}.door span{color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem;display:flex;flex-direction:column;gap:.35rem}
+.card h3{margin:0;font-size:1.1rem}.card p{margin:0}.meta{color:var(--mut);font-size:.9rem}
+.tags,.badges{display:flex;gap:.35rem;flex-wrap:wrap}
+.tag{font-size:.78rem;font-weight:700;padding:.1rem .55rem;border-radius:99px;background:var(--soft)}
+.badge{font-size:.8rem;border:1px solid var(--line);border-radius:6px;padding:0 .4rem}
+.card .btn{margin-top:auto;align-self:flex-start;padding:.3rem .7rem;font-size:.85rem}
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem}
+.filters label{font-size:.9rem}.filters .row{display:flex;gap:.8rem;flex-wrap:wrap;width:100%}
+table{border-collapse:collapse;width:100%;background:var(--card)}
+th,td{border:1px solid var(--line);padding:.5rem;text-align:center}th:first-child,td:first-child{text-align:left}
+td button{font:inherit;font-weight:700;background:var(--soft);color:var(--ink);border:0;border-radius:8px;padding:.3rem .8rem;cursor:pointer;min-width:2.5rem}
+td button:hover{background:var(--btn);color:var(--onbtn)}
+.about{display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start}.about img{width:min(100%,320px);border-radius:16px}.about>div{flex:1;min-width:260px}
+footer{text-align:center;color:var(--mut);padding:1.5rem 1rem;border-top:1px solid var(--line);font-size:.9rem}
+</style>
 </head>
 <body>
+<header><div class="bar">
+<a class="brand" href="#home"><img src="nugget.png" alt="">Nugget Maths</a>
+<nav aria-label="Main"><a href="#home">Home</a><a href="#activities">Activities</a><a href="#teachers">For teachers</a><a href="#parents">For parents</a><a href="#curriculum">Curriculum map</a><a href="#about">About Nugget</a></nav>
+</div></header>
+<main id="app"></main>
+<footer>Nugget Maths · nugget-maths.co.nz · Free maths resources for NZ teachers, students and whānau</footer>
+<script>
+let D=[{"id": "constellation", "t": "Constellation", "d": "Claim spaces on the constellation board by creating numbers using operations.", "u": "https://utepoelman.github.io/constellation-game/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 7, "yt": 10, "top": "operations; creating numbers; mental calculation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-2"}, {"id": "cascade", "t": "Cascade", "d": "Place all your marbles on the board without any falling through.", "u": "https://utepoelman.github.io/cascade/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": [], "yf": 7, "yt": 10, "top": "logic", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "2"}, {"id": "adders-and-ladders", "t": "Adders & Ladders", "d": "Add and multiply integers in a game inspired by snakes and ladders.", "u": "https://utepoelman.github.io/adders-and-ladders/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 7, "yt": 9, "top": "integers; adding; multiplying; negative numbers", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-4"}, {"id": "duel-of-sums", "t": "Duel of Sums", "d": "Use your basic facts knowledge to win cards.", "u": "https://utepoelman.github.io/duel-of-sums/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 5, "yt": 8, "top": "basic facts; addition; mental calculation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-5"}, {"id": "balance-quest", "t": "Nugget's Balance Quest", "d": "Help Nugget balance nuts on the number line using positive and negative numbers.", "u": "https://utepoelman.github.io/balance-quest/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 7, "yt": 9, "top": "integers; number line; negative numbers; fractions; like terms; expressions", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "ultimate-fractionator", "t": "Ultimate Fractionator", "d": "Compare fractions and discard fraction cards in order.", "u": "https://utepoelman.github.io/ultimate-fractionator/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 5, "yt": 9, "top": "fractions; comparing fractions; ordering", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "2-6"}, {"id": "spirit-containment", "t": "Spirit Containment", "d": "Trap a ghost using linear inequalities.", "u": "https://utepoelman.github.io/spirit-containment/", "aud": "Student", "type": "Game", "pri": "Algebra", "oth": ["Geometry"], "yf": 9, "yt": 11, "top": "linear inequalities; graphing; regions", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "imaginary-horizon", "t": "Imaginary Horizon", "d": "Add and multiply complex numbers and be first to reach the wormhole.", "u": "https://utepoelman.github.io/imaginary-horizon/", "aud": "Student", "type": "Game", "pri": "Algebra", "oth": ["Number"], "yf": 12, "yt": 13, "top": "complex numbers; imaginary numbers; Argand diagram", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-2"}, {"id": "substitution-duel", "t": "Substitution Duel", "d": "Roll dice and pick an expression to maximise your score.", "u": "https://utepoelman.github.io/substitution-duel/", "aud": "Student", "type": "Game", "pri": "Algebra", "oth": ["Number"], "yf": 8, "yt": 10, "top": "substitution; expressions; evaluating", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "2"}, {"id": "flipslide", "t": "FlipSlide: The Art of Isometric Interference", "d": "A transformation geometry game with reflections, rotations and translations.", "u": "https://utepoelman.github.io/flipslide/", "aud": "Student", "type": "Game", "pri": "Geometry", "oth": [], "yf": 7, "yt": 10, "top": "transformations; reflection; rotation; translation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-3"}, {"id": "jigsaw-lines", "t": "Straight Lines Jigsaw Puzzle", "d": "Match graphs, equations and points on straight lines.", "u": "https://utepoelman.github.io/jigsaw-lines/", "aud": "Student", "type": "Puzzle", "pri": "Algebra", "oth": [], "yf": 9, "yt": 11, "top": "straight lines; gradient; y = mx + c; graphs", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "jigsaw-squares", "t": "Square Measurement Jigsaw Puzzle", "d": "Match area, perimeter and side length of squares.", "u": "https://utepoelman.github.io/jigsaw-squares/", "aud": "Student", "type": "Puzzle", "pri": "Measurement", "oth": [], "yf": 7, "yt": 9, "top": "area; perimeter; squares; square roots", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "jigsaw-circles", "t": "Circle Measurement Jigsaw Puzzle", "d": "Match area, circumference, diameter and radius of circles.", "u": "https://utepoelman.github.io/jigsaw-circles/", "aud": "Student", "type": "Puzzle", "pri": "Measurement", "oth": ["Geometry"], "yf": 8, "yt": 10, "top": "circles; area; circumference; pi", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "gema-connect", "t": "GEMA-Connect", "d": "Like Connect 4, but roll three dice and apply the order of operations.", "u": "https://utepoelman.github.io/GEMA-connect/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 6, "yt": 9, "top": "order of operations; GEMA; dice", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "2"}, {"id": "remainder-race", "t": "Remainder Race", "d": "Roll three dice, choose a dividend and divisor; the remainder is your score. First to 25 wins.", "u": "https://utepoelman.github.io/remainder-race/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 6, "yt": 9, "top": "division; remainders; dice", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-2"}, {"id": "bingo", "t": "Maths Bingo", "d": "Find a factor of a number or make a number with three dice, solo or as a class.", "u": "https://utepoelman.github.io/bingo/", "aud": "Both", "type": "Game", "pri": "Number", "oth": [], "yf": 6, "yt": 9, "top": "factors; multiples; dice; whole-class game; operations", "col": "No", "cert": "No", "prt": "No", "shr": "Yes", "pl": "Whole class"}, {"id": "area-architect", "t": "Area Architect", "d": "Factorise and expand quadratics using the area model.", "u": "https://utepoelman.github.io/area-architect/main.html", "aud": "Student", "type": "Practice", "pri": "Algebra", "oth": [], "yf": 10, "yt": 12, "top": "expanding; factorising; quadratics; area model", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "flow", "t": "Going with the Flow", "d": "Predict how containers fill with water, then test your predictions.", "u": "https://utepoelman.github.io/flow/", "aud": "Student", "type": "Explorer", "pri": "Algebra", "oth": ["Measurement"], "yf": 9, "yt": 11, "top": "rates of change; graphs; volume; prediction", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "circle-area", "t": "Circle Area & Pi Estimator", "d": "Estimate the area of a circle using grid squares.", "u": "https://utepoelman.github.io/circle-area/", "aud": "Student", "type": "Explorer", "pri": "Measurement", "oth": ["Geometry"], "yf": 8, "yt": 10, "top": "circles; area; pi; estimation; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "Yes", "pl": "1"}, {"id": "yahtzee-deluxe", "t": "Yahtzee Deluxe", "d": "A clone of the classic dice game.", "u": "https://utepoelman.github.io/yahtzee-deluxe/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 13, "top": "dice; chance; combinations; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-4"}, {"id": "battle-chips", "t": "Battle Chips", "d": "Deploy chips, land rolls to trigger strikes, and destroy a rival chip.", "u": "https://utepoelman.github.io/battle-chips/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 11, "top": "dice; chance; strategy", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-2"}, {"id": "greedy-pig", "t": "Greedy Pig", "d": "The classic dice game: bank your score before you roll a one.", "u": "https://utepoelman.github.io/greedy-pig/", "aud": "Both", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 11, "top": "dice; risk; chance; expected value", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-4"}, {"id": "four-dice-challenge", "t": "Four-Dice Challenge", "d": "Pick a die and roll the higher number to win the round.", "u": "https://utepoelman.github.io/four-dice-challenge/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 12, "top": "non-transitive dice; chance; fairness", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "2"}, {"id": "up-or-out", "t": "Up or Out", "d": "Spin a higher number or lose your stake.", "u": "https://utepoelman.github.io/up-or-out/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 11, "top": "spinner; chance; risk; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "three-digit-challenge", "t": "Three-Digit Challenge", "d": "Spin three times and make the highest possible number to win.", "u": "https://utepoelman.github.io/three-digit-challenge/", "aud": "Student", "type": "Game", "pri": "Number", "oth": ["Probability"], "yf": 5, "yt": 9, "top": "place value; ordering digits; chance; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "higher-lower", "t": "Higher-Lower", "d": "Guess whether the next card will be higher or lower than the previous one.", "u": "https://utepoelman.github.io/higher-lower/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 10, "top": "cards; chance; conditional probability", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "monty-hall-simulator", "t": "Monty Hall Simulator", "d": "The classic game show problem: stick or switch to win a car?", "u": "https://utepoelman.github.io/monty-hall-simulator/", "aud": "Both", "type": "Simulation", "pri": "Probability", "oth": [], "yf": 9, "yt": 13, "top": "conditional probability; simulation; Monty Hall; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "galton-board", "t": "Galton Board", "d": "A plinko-style board simulator showing how random drops build a distribution.", "u": "https://utepoelman.github.io/galton-board/", "aud": "Both", "type": "Simulation", "pri": "Statistics", "oth": ["Probability"], "yf": 10, "yt": 13, "top": "distributions; binomial; normal distribution; simulation, data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "yahtzee-challenge", "t": "Yahtzee Challenge", "d": "Get Yahtzee or four-of-a-kind to win.", "u": "https://utepoelman.github.io/yahtzee-challenge/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 11, "top": "dice; chance; combinations; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "slot-machine", "t": "Slot Machine", "d": "Configure and simulate your own slot machine.", "u": "https://utepoelman.github.io/slot-machine/", "aud": "Both", "type": "Simulation", "pri": "Probability", "oth": ["Statistics"], "yf": 9, "yt": 12, "top": "expected value; fair games; simulation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "four-dice-simulator", "t": "Four-Dice Simulator", "d": "Pick a die, roll the higher number, and simulate many rounds.", "u": "https://utepoelman.github.io/four-dice-simulator/", "aud": "Both", "type": "Simulation", "pri": "Probability", "oth": ["Statistics"], "yf": 9, "yt": 12, "top": "simulation; experimental probability; long-run frequency; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "delta-roulette", "t": "Delta Roulette", "d": "Like roulette, but played with two dice.", "u": "https://utepoelman.github.io/delta-roulette/", "aud": "Student", "type": "Game", "pri": "Probability", "oth": [], "yf": 7, "yt": 11, "top": "two dice; sample space; differences", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1-4"}, {"id": "maze", "t": "Maze", "d": "Navigate from start to finish.", "u": "https://utepoelman.github.io/maze/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": [], "yf": 7, "yt": 13, "top": "maze; problem solving", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "simon", "t": "Simon", "d": "Repeat an increasingly complex sequence of lights.", "u": "https://utepoelman.github.io/simon/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": [], "yf": 7, "yt": 13, "top": "memory; sequences", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "reaction-time", "t": "Reaction Time Tester", "d": "Hit the spacebar when the colour changes.", "u": "https://utepoelman.github.io/reaction-time/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": ["Statistics"], "yf": 7, "yt": 13, "top": "reaction time; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "time-estimation", "t": "Time Estimation", "d": "Estimate a set target time.", "u": "https://utepoelman.github.io/time-estimation/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": ["Statistics"], "yf": 7, "yt": 13, "top": "estimation; time; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "speed-typing", "t": "Speed Typing", "d": "Type a given paragraph as fast as you can.", "u": "https://utepoelman.github.io/speed-typing/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": ["Statistics"], "yf": 7, "yt": 13, "top": "typing speed; data collection", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "path-tracing", "t": "Path Tracing", "d": "Trace a given smooth or polygonal path.", "u": "https://utepoelman.github.io/path-tracing/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": [], "yf": 7, "yt": 13, "top": "accuracy; paths", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "spot-the-difference", "t": "Spot the Difference", "d": "Find five differences between two images.", "u": "https://utepoelman.github.io/spot-the-difference/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": [], "yf": 7, "yt": 13, "top": "observation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "memory-test", "t": "Memory Test", "d": "Recall words from a list.", "u": "https://utepoelman.github.io/memory-test/", "aud": "Student", "type": "Game", "pri": "Just for fun", "oth": ["Statistics"], "yf": 7, "yt": 13, "top": "memory; recall", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "minute-of-maths", "t": "Nugget's Minute of Maths", "d": "One minute of basic facts practice - how many can you get?", "u": "https://utepoelman.github.io/minute-of-maths/", "aud": "Student", "type": "Practice", "pri": "Number", "oth": [], "yf": 5, "yt": 9, "top": "basic facts; fluency; timed practice", "col": "Yes", "cert": "No", "prt": "No", "shr": "Yes", "pl": "1"}, {"id": "squares-cubes", "t": "Squares & Cubes Explorer", "d": "Change the side length and watch the area of a square or volume of a cube change in real time.", "u": "https://utepoelman.github.io/squares-cubes/", "aud": "Both", "type": "Explorer", "pri": "Algebra", "oth": ["Measurement"], "yf": 7, "yt": 10, "top": "squares; cubes; powers; area; volume", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "equation-sandbox", "t": "Equation Sandbox", "d": "Manipulate items on balance scales to solve linear equations.", "u": "https://utepoelman.github.io/equation-sandbox/", "aud": "Both", "type": "Explorer", "pri": "Algebra", "oth": [], "yf": 7, "yt": 10, "top": "linear equations; balance; solving", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "expression-sandbox", "t": "Expression Sandbox", "d": "Simplify algebraic expressions by combining bubbles.", "u": "https://utepoelman.github.io/expression-sandbox/", "aud": "Both", "type": "Explorer", "pri": "Algebra", "oth": [], "yf": 7, "yt": 10, "top": "simplifying; like terms; expressions", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "rounding1", "t": "Rounding with Nugget 1", "d": "Zoom in and out of the number line to find the acorn.", "u": "https://utepoelman.github.io/rounding1/", "aud": "Student", "type": "Game", "pri": "Number", "oth": [], "yf": 5, "yt": 8, "top": "rounding; number line; place value", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "rounding2", "t": "Rounding with Nugget 2", "d": "Round to the nearest power of ten, decimal places or significant figures.", "u": "https://utepoelman.github.io/rounding2/", "aud": "Student", "type": "Practice", "pri": "Number", "oth": [], "yf": 7, "yt": 10, "top": "rounding; decimal places; significant figures", "col": "No", "cert": "Yes", "prt": "No", "shr": "No", "pl": "1"}, {"id": "data-cleaning-lab", "t": "Data Cleaning Lab", "d": "Clean an untidy spreadsheet of student data.", "u": "https://utepoelman.github.io/data-cleaning-lab/", "aud": "Student", "type": "Practice", "pri": "Statistics", "oth": [], "yf": 9, "yt": 13, "top": "data cleaning; spreadsheets; data quality; statistical investigation", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "dataset-generator", "t": "Dataset Generator", "d": "Simulate and download statistical datasets for teaching.", "u": "https://utepoelman.github.io/dataset-generator/", "aud": "Teacher tool", "type": "Generator", "pri": "Statistics", "oth": ["Probability"], "yf": 9, "yt": 13, "top": "datasets; distributions; simulation; download", "col": "No", "cert": "No", "prt": "Yes", "shr": "No", "pl": ""}, {"id": "word-scramble", "t": "Word Scramble Studio", "d": "Create custom word scramble activities and share them with students.", "u": "https://utepoelman.github.io/word-scramble/", "aud": "Teacher tool", "type": "Generator", "pri": "Any / cross-strand", "oth": [], "yf": 7, "yt": 13, "top": "vocabulary; literacy; key terms", "col": "No", "cert": "No", "prt": "No", "shr": "Yes", "pl": ""}, {"id": "stats-terms-scramble", "t": "Statistics Terms Word Scramble", "d": "An example word scramble made with Word Scramble Studio.", "u": "https://tinyurl.com/4m2kjzaw", "aud": "Student", "type": "Puzzle", "pri": "Statistics", "oth": [], "yf": 9, "yt": 13, "top": "statistics vocabulary; key terms", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "spirograph", "t": "Spirograph Studio", "d": "Make geometric art and learn about parametric curves.", "u": "https://utepoelman.github.io/spirograph/", "aud": "Both", "type": "Explorer", "pri": "Geometry", "oth": ["Algebra"], "yf": 9, "yt": 13, "top": "parametric curves; patterns; geometric art", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}, {"id": "maths-pairs", "t": "Nugget's Maths Pairs", "d": "Select skills by NZ curriculum phase and create a memory game online or to print.", "u": "https://utepoelman.github.io/maths-pairs/", "aud": "Teacher tool", "type": "Generator", "pri": "Any / cross-strand", "oth": [], "yf": 7, "yt": 13, "top": "memory game; custom; curriculum phases; printable", "col": "Yes", "cert": "No", "prt": "Yes", "shr": "Yes", "pl": ""}, {"id": "maths-training", "t": "Nugget's Daily Maths Training", "d": "Set custom question sets, then create a link for students or print worksheets.", "u": "https://utepoelman.github.io/maths-training/", "aud": "Teacher tool", "type": "Generator", "pri": "Any / cross-strand", "oth": [], "yf": 7, "yt": 13, "top": "question sets; worksheets; daily practice", "col": "Yes", "cert": "Yes", "prt": "Yes", "shr": "Yes", "pl": ""}, {"id": "triangle-puzzle", "t": "Nugget's Triangle Puzzle", "d": "Place pieces with matching expressions next to each other.", "u": "https://utepoelman.github.io/triangle-puzzle/", "aud": "Student", "type": "Puzzle", "pri": "Algebra", "oth": ["Number"], "yf": 7, "yt": 10, "top": "matching; expressions; equivalence", "col": "No", "cert": "Yes", "prt": "Yes", "shr": "Yes", "pl": "1"}, {"id": "polyhedra-explorer", "t": "Polyhedra Explorer", "d": "Explore and manipulate 3D shapes and their properties, and export files.", "u": "https://utepoelman.github.io/polyhedra-explorer/", "aud": "Both", "type": "Explorer", "pri": "Geometry", "oth": ["Measurement"], "yf": 7, "yt": 13, "top": "3D shapes; polyhedra; Euler; nets; export", "col": "No", "cert": "No", "prt": "Yes", "shr": "No", "pl": "1"}, {"id": "distance-time", "t": "Distance-Time Graph Explorer", "d": "Interpret distance-time graphs in context.", "u": "https://utepoelman.github.io/distance-time/", "aud": "Student", "type": "Explorer", "pri": "Algebra", "oth": ["Measurement"], "yf": 9, "yt": 11, "top": "distance-time graphs; rates; gradient; interpreting graphs", "col": "No", "cert": "No", "prt": "No", "shr": "No", "pl": "1"}];
+const PH=[["Phase 2","Years 4–6",4,6],["Phase 3","Years 7–8",7,8],["Phase 4","Years 9–10",9,10],["Senior","Years 11–13",11,13]];
+const STR=["Number","Algebra","Geometry","Measurement","Statistics","Probability"];
+const FEAT=[["col","📊 Collects class data"],["cert","🏅 Certificate"],["prt","🖨 Printable"],["shr","🔗 Shareable link"]];
 
-    <header>
-        <h1>🐹 The Nugget Maths Lab</h1>
-        <p class="subtitle">Interactive, AI-crafted maths resources celebrating curiosity, creativity, and connection.</p>
-    </header>
+function parseCSV(txt){
+  txt=txt.replace(/^\uFEFF/,"");const rows=[];let row=[],f="",q=false;
+  for(let i=0;i<txt.length;i++){const c=txt[i];
+    if(q){if(c==='"'){if(txt[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+    else if(c==='"')q=true;else if(c===","){row.push(f);f=""}
+    else if(c==="\n"||c==="\r"){if(c==="\r"&&txt[i+1]==="\n")i++;row.push(f);rows.push(row);row=[];f=""}
+    else f+=c}
+  if(f||row.length){row.push(f);rows.push(row)}
+  const h=rows.shift().map(x=>x.trim()),out=[];
+  rows.forEach((r,n)=>{const o={};h.forEach((k,i)=>o[k]=(r[i]||"").trim());if(!o["Title"])return;
+    const yf=+o["Year from"],yt=+o["Year to"];
+    if(!yf||!yt){console.warn("Skipped row "+(n+2)+" ("+o["Title"]+"): check Year from / Year to");return}
+    out.push({id:o["ID (slug)"],t:o["Title"],d:o["Short description"],u:o["URL"],aud:o["Audience"],type:o["Type"],pri:o["Primary strand"],
+      oth:(o["Other strands"]||"").split(",").map(x=>x.trim()).filter(Boolean),yf,yt,top:o["Topic keywords"],col:o["Teacher can collect data?"],
+      cert:o["Certificate?"],prt:o["Printable / downloadable?"],shr:o["Shareable link / teacher set-up?"],pl:o["Players"]})});
+  return out}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const yrs=a=>a.yf===a.yt?`Year ${a.yf}`:`Years ${a.yf}–${a.yt}`;
+const blank=()=>({q:"",aud:"",yr:"",str:"",type:"",feat:[]});
+let F=blank();
+const app=document.getElementById("app");
 
-    <main class="grid">
-        <!-- Activity Card 1 -->
-        <div class="card">
-            <div>
-                <span class="tag">Year 7-9 • Number</span>
-                <h3>Nugget Integer Jumper</h3>
-                <p>Help Nugget the hamster hop along the integer line to visualize addition and subtraction of negative numbers.</p>
-            </div>
-            <a href="integer-hop.html" class="btn">Launch Activity 🚀</a>
-        </div>
-    </main>
+function card(a){
+  const tags=[a.aud==="Student"?"":(a.aud==="Teacher tool"?"For teachers":"Students & teachers"),a.pri,a.type].filter(Boolean)
+    .map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+  const badges=FEAT.filter(([k])=>a[k]==="Yes").map(([,l])=>`<span class="badge">${l}</span>`).join("");
+  const meta=[yrs(a),a.pl&&a.pl!=="n/a"?(a.pl==="Whole class"?"Whole class":a.pl+(a.pl==="1"?" player":" players")):""].filter(Boolean).join(" · ");
+  return `<article class="card"><div class="tags">${tags}</div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p><p class="meta">${meta}</p>
+  <div class="badges">${badges}</div>
+  <div style="display:flex;gap:.4rem;margin-top:auto;flex-wrap:wrap"><a class="btn" style="margin:0" href="${esc(a.u)}" target="_blank" rel="noopener">Open</a>
+  <button class="btn alt" style="margin:0;padding:.3rem .7rem;font-size:.85rem" data-copy="${esc(a.u)}">Copy link</button></div></article>`;
+}
+function match(a,f){
+  const h=[a.t,a.d,a.top,a.pri,a.oth.join(" "),a.type].join(" ").toLowerCase();
+  if(!f.q.toLowerCase().split(/\s+/).filter(Boolean).every(w=>h.includes(w)))return false;
+  if(f.aud==="Student"&&a.aud==="Teacher tool")return false;
+  if(f.aud==="Teacher tool"&&a.aud==="Student")return false;
+  if(f.str&&a.pri!==f.str&&!a.oth.includes(f.str))return false;
+  if(f.type&&a.type!==f.type)return false;
+  if(f.yr){const[x,y]=f.yr.split("-").map(Number);if(!(a.yf<=y&&a.yt>=x))return false}
+  return f.feat.every(k=>a[k]==="Yes");
+}
+const opt=(v,l,sel)=>`<option value="${v}"${sel===v?" selected":""}>${l}</option>`;
+const yrOpts=sel=>opt("","All year levels",sel)+PH.map(p=>opt(`${p[2]}-${p[3]}`,`${p[0]} (${p[1]})`,sel)).join("")+[5,6,7,8,9,10,11,12,13].map(y=>opt(`${y}-${y}`,`Year ${y}`,sel)).join("");
+const grid=l=>l.length?`<div class="grid">${l.map(card).join("")}</div>`:`<p>No activities match yet – try fewer filters.</p>`;
 
+const views={
+home(){
+  const t=D.filter(a=>a.aud==="Teacher tool");
+  return `<section class="hero"><img src="nugget.png" alt="Nugget the hamster holding a nut"><div>
+  <h1>Maths that’s fun to practise, easy to find.</h1>
+  <p>Free games, practice activities and teacher tools, organised by NZ Curriculum strand and year level. Meet Nugget – he’s been hopping along number lines since the very first lesson.</p>
+  <form class="search" role="search" id="hs"><input type="search" id="hq" aria-label="Search activities" placeholder="Search e.g. fractions, probability, quadratics…"><button class="btn">Search</button></form></div></section>
+  <h2>Who are you?</h2><div class="doors">
+  <a class="door" href="#teachers"><b>👩‍🏫 I’m a teacher</b><span>${t.length} tools to create resources, plus activities that collect data or award certificates.</span></a>
+  <a class="door" href="#activities" data-pre="Student"><b>🎒 I’m a student</b><span>Games, puzzles and practice – pick your year level and have a go.</span></a>
+  <a class="door" href="#parents"><b>🏡 I’m a parent</b><span>Simple ways to help your child practise at home.</span></a></div>
+  <h2>Browse by strand</h2><div class="doors">${STR.map(s=>`<a class="door" href="#activities" data-str="${s}"><b>${s}</b><span>${D.filter(a=>a.pri===s||a.oth.includes(s)).length} activities</span></a>`).join("")}</div>
+  <h2>Teacher tools</h2>${grid(t)}<p><a href="#curriculum">See the full curriculum map →</a></p>`;
+},
+activities(){
+  setTimeout(()=>{bind();upd()});
+  return `<h1>Find an activity</h1><div class="filters">
+  <input type="search" id="q" aria-label="Search" placeholder="Search by topic or title" value="${esc(F.q)}">
+  <select id="aud" aria-label="Audience">${opt("","Students & teachers",F.aud)}${opt("Student","For students",F.aud)}${opt("Teacher tool","Teacher tools",F.aud)}</select>
+  <select id="yr" aria-label="Year level">${yrOpts(F.yr)}</select>
+  <select id="str" aria-label="Strand">${opt("","All strands",F.str)}${STR.map(s=>opt(s,s,F.str)).join("")}${opt("Any / cross-strand","Cross-strand",F.str)}${opt("Just for fun","Just for fun",F.str)}</select>
+  <select id="type" aria-label="Type">${opt("","All types",F.type)}${["Game","Practice","Puzzle","Simulation","Explorer","Generator"].map(s=>opt(s,s,F.type)).join("")}</select>
+  <div class="row">${FEAT.map(([k,l])=>`<label><input type="checkbox" data-f="${k}"${F.feat.includes(k)?" checked":""}> ${l}</label>`).join("")}
+  <button class="btn alt" id="clr" style="padding:.2rem .8rem">Clear all</button></div></div>
+  <p id="count" aria-live="polite" class="meta"></p><div id="list"></div>`;
+},
+teachers(){
+  const t=D.filter(a=>a.aud==="Teacher tool"),r=D.filter(a=>a.aud!=="Teacher tool"&&(a.col==="Yes"||a.cert==="Yes"));
+  return `<h1>For teachers</h1><p>Create your own resources, or set an activity for your class and share the link. Use <b>Copy link</b> on any card to paste into your LMS or Google Classroom.</p>
+  <h2>Tools to create resources</h2>${grid(t)}
+  <h2>Activities that collect data or award certificates</h2>${grid(r)}
+  <p><a class="btn" href="#activities" data-pre="Teacher tool">Browse everything for the classroom</a></p>`;
+},
+parents(){
+  setTimeout(()=>{const s=document.getElementById("py"),o=document.getElementById("pl");const u=()=>{const[x,y]=s.value.split("-").map(Number);
+    o.innerHTML=grid(D.filter(a=>a.aud!=="Teacher tool"&&a.pri!=="Just for fun"&&a.yf<=y&&a.yt>=x))};s.onchange=u;u()});
+  return `<h1>Helping your child with maths</h1>
+  <p>You don’t need to be a maths expert. Short, regular practice beats long sessions – ten minutes of a game a few times a week is plenty.</p>
+  <ul><li>Let your child be the teacher: ask them to explain what they’re doing.</li><li>Praise effort and strategies, not just correct answers.</li><li>Play two-player games together – losing graciously is a skill too.</li><li>If they’re stuck, try a younger year level first to build confidence.</li></ul>
+  <h2>Activities for my child’s year level</h2><p><select id="py" aria-label="Year level">${[5,6,7,8,9,10,11,12,13].map(y=>opt(`${y}-${y}`,`Year ${y}`,"7-7")).join("")}</select></p><div id="pl"></div>`;
+},
+curriculum(){
+  const row=s=>`<tr><th scope="row">${s}</th>${PH.map(p=>{const n=D.filter(a=>(a.pri===s||a.oth.includes(s))&&a.yf<=p[3]&&a.yt>=p[2]).length;
+    return `<td>${n?`<button data-str="${s}" data-yr="${p[2]}-${p[3]}" aria-label="${n} ${s} activities, ${p[0]}">${n}</button>`:"–"}</td>`}).join("")}</tr>`;
+  return `<h1>Curriculum map</h1><p>Activities by <b>NZ Curriculum strand</b> and <b>phase</b>. Select a number to see the activities. Activities spanning several phases appear in each.</p>
+  <div style="overflow-x:auto"><table><thead><tr><th>Strand</th>${PH.map(p=>`<th scope="col">${p[0]}<br><small>${p[1]}</small></th>`).join("")}</tr></thead><tbody>${STR.map(row).join("")}</tbody></table></div>`;
+},
+about(){
+  return `<h1>About Nugget</h1><div class="about"><img src="nugget-photo.jpg" alt="Nugget, a plush hamster holding a nut"><div>
+  <p>Nugget is a toy hamster. When I started teaching in New Zealand, I used him to explain adding and subtracting integers by making him hop along the number line.</p>
+  <p>Now Nugget has a digital version, and he appears in many of the learning activities and games on this site – all created for my own students and shared freely with other maths teachers.</p>
+  <img src="nugget.png" alt="Digital Nugget" style="width:140px;border-radius:0"></div></div>`;
+}};
+
+function bind(){
+  const g=id=>document.getElementById(id);
+  g("q").oninput=e=>{F.q=e.target.value;upd()};
+  [["aud","aud"],["yr","yr"],["str","str"],["type","type"]].forEach(([i,k])=>g(i).onchange=e=>{F[k]=e.target.value;upd()});
+  document.querySelectorAll("[data-f]").forEach(c=>c.onchange=()=>{F.feat=[...document.querySelectorAll("[data-f]:checked")].map(x=>x.dataset.f);upd()});
+  g("clr").onclick=()=>{F=blank();render()};
+}
+function upd(){const l=D.filter(a=>match(a,F));document.getElementById("count").textContent=`${l.length} of ${D.length} activities`;document.getElementById("list").innerHTML=grid(l)}
+function render(){
+  const h=location.hash.slice(1)||"home",v=views[h]?h:"home";
+  app.innerHTML=views[v]();
+  document.querySelectorAll("nav a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+v));
+  const hs=document.getElementById("hs");if(hs)hs.onsubmit=e=>{e.preventDefault();F={...blank(),q:document.getElementById("hq").value};location.hash="activities"};
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-copy]");if(c){navigator.clipboard&&navigator.clipboard.writeText(c.dataset.copy);c.textContent="Copied ✓";setTimeout(()=>c.textContent="Copy link",1500);return}
+  const t=e.target.closest("[data-pre],[data-str]");if(!t)return;
+  F={...blank(),aud:t.dataset.pre||"",str:t.dataset.str||"",yr:t.dataset.yr||""};
+  if(location.hash==="#activities")render();else location.hash="activities";
+});
+addEventListener("hashchange",render);
+fetch("catalogue.csv",{cache:"no-cache"}).then(r=>r.ok?r.text():Promise.reject()).then(x=>{const n=parseCSV(x);if(n.length)D=n}).catch(()=>{}).finally(render);
+</script>
 </body>
 </html>
